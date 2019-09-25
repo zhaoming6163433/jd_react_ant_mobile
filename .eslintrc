@@ -1,0 +1,30 @@
+{
+    "extends": "react-app",
+    "globals": {
+        "echarts": true
+    },
+    "rules": {
+        // 设置规则，具体看官网用户指南下的规则文档
+        "eqeqeq": 0,
+        "strict": 0,
+        "no-unused-vars": 0,
+        "no-irregular-whitespace": 2,
+        "no-trailing-spaces": 2,
+        "react/no-will-update-set-state": 0,
+        "react/no-direct-mutation-state": 0,
+        "react/sort-comp": 0,
+        "no-undefined": 0,
+        "no-inner-declarations": 0,
+        "no-var": 0,
+        "no-redeclare": 0,
+        "no-case-declarations": 0,
+        "handle-callback-err": 0,
+        "array-callback-return": 0,
+        "no-array-constructor": 0,
+        "no-eval":0,
+        "no-useless-concat":0,
+        "no-undef":0,
+        "react/jsx-no-undef":0,
+        "no-self-assign":0
+    }
+  }
