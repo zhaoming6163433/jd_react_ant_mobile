@@ -1,13 +1,7 @@
 // import Vue from 'vue';
 import $ from 'n-zepto'
-import appConfigs from '../configs.js'
 import export_json_to_excel from 'assets/js/Export2Excel.js'
 import moment from 'moment';
-import { message } from 'antd';
-// 最大显示数, 超过限制时，最早的消息会被自动关闭
-message.config({
-    maxCount: 1
-});
 
 // let getevent = () => {
 //     var Event = new Vue();
@@ -110,11 +104,6 @@ let _luhnCheck = function(bankno) {
         console.log("验证通过");
         return true;
     } else {
-        // Vue.$toast({
-        //     message: "银行卡号不正确",
-        //     position: 'middle',
-        //     duration: appConfigs.toastime
-        // });
         return false;
     }
 }
@@ -249,11 +238,6 @@ const utils = {
     },
     //提示中间toast
     toastinfo(msg) {
-        // Vue.$toast({
-        //     message: msg,
-        //     position: 'middle',
-        //     duration: appConfigs.toastime
-        // });
     },
     loadingopen(){
         // Vue.$indicator.open();
@@ -344,15 +328,12 @@ const utils = {
     },
     //登录错误提示
     errortip(info) {
-        message.error(info);
     },
     //成功提示
     successtip(info) {
-        message.success(info);
     },
     //警告提示
     warningtip(info) {
-        message.warning(info);
     },
     //身份证截取出生日期
     getBirthdayFromIdCard(idCard) {
@@ -498,5 +479,18 @@ const utils = {
         }
         return s1;
     },
+    //获取路由地址
+    getRouteUrl(){
+        let url = window.location.href;
+        let name = '';
+        if (url.substring(url.indexOf('#/')).indexOf('?') != -1) {
+            name = url.substring(url.indexOf('#/'), url.indexOf('?'));
+        } else {
+            name = url.substring(url.indexOf('#/'));
+        }
+        let _arr = name.split('#/');
+        name = _arr[1];
+        return name;
+    }
 }
 export default utils

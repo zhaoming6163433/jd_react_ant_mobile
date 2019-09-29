@@ -1,47 +1,28 @@
 import { TabBar } from 'antd-mobile';
+import React from 'react';
+import { createHashHistory } from 'history';
 import './index.scss';
+
+const history = createHashHistory();
 
 class TabBarExample extends React.Component {
   constructor(props) {
     super(props);
     this.state = {
-      selectedTab: 'redTab',
+      selectedTab: props.pathname,
       hidden: false,
-      fullScreen: false,
+      fullScreen: true,
     };
   }
-
+  componentDidMount() {
+    console.log(this.props)
+  }
   renderContent(pageText) {
-    return (
-      <div style={{ backgroundColor: 'white', height: '100%', textAlign: 'center' }}>
-        <div style={{ paddingTop: 60 }}>Clicked “{pageText}” tab， show “{pageText}” information</div>
-        <a style={{ display: 'block', marginTop: 40, marginBottom: 20, color: '#108ee9' }}
-          onClick={(e) => {
-            e.preventDefault();
-            this.setState({
-              hidden: !this.state.hidden,
-            });
-          }}
-        >
-          Click to show/hide tab-bar
-        </a>
-        <a style={{ display: 'block', marginBottom: 600, color: '#108ee9' }}
-          onClick={(e) => {
-            e.preventDefault();
-            this.setState({
-              fullScreen: !this.state.fullScreen,
-            });
-          }}
-        >
-          Click to switch fullscreen
-        </a>
-      </div>
-    );
   }
 
   render() {
     return (
-      <div style={this.state.fullScreen ? { position: 'fixed', height: '100%', width: '100%', top: 0 } : { height: 400 }}>
+      <div style={this.state.fullScreen ? { position: 'fixed', width: '100%', bottom: 0 } : { height: 400 }}>
         <TabBar
           unselectedTintColor="#949494"
           tintColor="#33A3F4"
@@ -63,11 +44,12 @@ class TabBarExample extends React.Component {
               background: 'url(https://zos.alipayobjects.com/rmsportal/iSrlOTqrKddqbOmlvUfq.svg) center center /  21px 21px no-repeat' }}
             />
             }
-            selected={this.state.selectedTab === 'blueTab'}
+            selected={this.state.selectedTab === 'home'}
             badge={1}
             onPress={() => {
+                history.push('/home');
               this.setState({
-                selectedTab: 'blueTab',
+                selectedTab: 'home',
               });
             }}
             data-seed="logId"
@@ -92,11 +74,12 @@ class TabBarExample extends React.Component {
             title="Koubei"
             key="Koubei"
             badge={'new'}
-            selected={this.state.selectedTab === 'redTab'}
+            selected={this.state.selectedTab === 'koubei'}
             onPress={() => {
-              this.setState({
-                selectedTab: 'redTab',
-              });
+                history.push('/koubei');
+                this.setState({
+                    selectedTab: 'koubei',
+                });
             }}
             data-seed="logId1"
           >
@@ -134,11 +117,12 @@ class TabBarExample extends React.Component {
             selectedIcon={{ uri: 'https://zos.alipayobjects.com/rmsportal/gjpzzcrPMkhfEqgbYvmN.svg' }}
             title="My"
             key="my"
-            selected={this.state.selectedTab === 'yellowTab'}
+            selected={this.state.selectedTab === 'myuser'}
             onPress={() => {
-              this.setState({
-                selectedTab: 'yellowTab',
-              });
+                history.push('/myuser');
+                this.setState({
+                    selectedTab: 'myuser',
+                });
             }}
           >
             {this.renderContent('My')}
@@ -148,5 +132,4 @@ class TabBarExample extends React.Component {
     );
   }
 }
-
-ReactDOM.render(<TabBarExample />, mountNode);
+export default TabBarExample;

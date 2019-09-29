@@ -22,7 +22,8 @@ module.exports = override(
         ["services"]: path.resolve(__dirname, "src/services"),        
         ["components"]: path.resolve(__dirname, "src/components"),
         ["@"]: path.resolve(__dirname, "src"),
-        ["utils"]: path.resolve(__dirname, "src/utils")
+        ["utils"]: path.resolve(__dirname, "src/utils"),
+        ["routes"]: path.resolve(__dirname, "src/routes")
     }),
     useEslintRc(),
     (config) => {

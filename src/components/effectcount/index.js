@@ -9,7 +9,6 @@ function Example() {
   // Similar to componentDidMount and componentDidUpdate:
   useEffect(() => {
     // Update the document title using the browser API
-    console.log(222)
     document.title = `You clicked ${count} times`;
     emitter.addListener("callMe",handel);
     return () => {

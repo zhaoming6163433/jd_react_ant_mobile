@@ -2,24 +2,25 @@ import React, { Component } from 'react';
 import {connect} from 'react-redux';
 
 const mapState = state => ({
-    myuser: state.myuser
+    login: state.myuser
 })
 const mapDispatch = (dispatch) => ({
-    myuserDispatch: dispatch.myuser
+    loginDispatch: dispatch.login
 })
 
-class Myuser extends Component {
+class Login extends Component {
+    componentDidUpdate (prevProps, prevState) {
+    };
     componentDidMount(){
-        console.log(this.props.myuser)
     };
     render() {
-        console.log(this.props.myuser)
+        console.log(this.props.login)
         return (
             <div>
-                Myuser
+                login
             </div>
         );
     }
   }
 
-  export default connect(mapState,mapDispatch)(Myuser);
+  export default connect(mapState,mapDispatch)(Login);
